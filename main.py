@@ -28,8 +28,8 @@ def load_data():
     return data, all_topics
 
 
-model = AutoModelWithLMHead.from_pretrained("xlnet-large-cased")    
-tokenizer = AutoTokenizer.from_pretrained("xlnet-large-cased")
+model = AutoModelWithLMHead.from_pretrained("xlnet-base-cased")    
+tokenizer = AutoTokenizer.from_pretrained("xlnet-base-cased")
 data, all_topics = load_data()
 
 chosen_topics = st.multiselect("choose topics", all_topics, default=["visualization"])
@@ -50,7 +50,7 @@ chosen_topics_string = ""
 if len(chosen_topics) == 1:
     chosen_topics_string = "topic of the article is " + chosen_topics[0]
 elif len(chosen_topics) == 2:
-    chosen_topics_string = "topics of the article are " + chosen_topics[0] + " and " + chosen_topics[0]
+    chosen_topics_string = "topics of the article are " + chosen_topics[0] + " and " + chosen_topics[1]
 else:
     chosen_topics_string = "topics of the article are " + ", ".join(chosen_topics[:-1]) + " and " + chosen_topics[-1]
 
